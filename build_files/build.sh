@@ -194,69 +194,69 @@ dnf5 install -y --setopt=install_weak_deps=False \
     wdisplays
 
 ### Handle Manual Installations ###
+# TODO later.
+#mkdir /usr/local/bin
+#echo "Attempting manual installation of cliphist"
+#cd "${TEMP_DIR}"
+#wget https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64 -O cliphist
+#chmod +x cliphist
+## Check if an RPM didn't already install it
+#if [[ ! -f /usr/bin/cliphist ]]; then
+#    cp cliphist /usr/local/bin/cliphist
+#else
+#    echo "cliphist already installed via RPM, skipping manual copy."
+#fi
 
-mkdir /usr/local/bin
-echo "Attempting manual installation of cliphist"
-cd "${TEMP_DIR}"
-wget https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64 -O cliphist
-chmod +x cliphist
-# Check if an RPM didn't already install it
-if [[ ! -f /usr/bin/cliphist ]]; then
-    cp cliphist /usr/local/bin/cliphist
-else
-    echo "cliphist already installed via RPM, skipping manual copy."
-fi
-
-echo "Attempting manual installation of dart-sass"
-cd "${TEMP_DIR}"
-wget https://github.com/sass/dart-sass/releases/download/1.87.0/dart-sass-1.87.0-linux-x64.tar.gz -O dart-sass.tar.gz
-tar -xzf dart-sass.tar.gz
-# Check if an RPM didn't already install it
-if [[ ! -f /usr/bin/dart-sass ]] && [[ ! -f /usr/local/bin/dart-sass ]]; then
-    # Copying directly to /usr/local/bin is generally okay for self-contained binaries
-    cp -rf dart-sass/* /usr/local/bin/
-else
-     echo "dart-sass appears to be already installed, skipping manual copy."
-fi
+#echo "Attempting manual installation of dart-sass"
+#cd "${TEMP_DIR}"
+#wget https://github.com/sass/dart-sass/releases/download/1.87.0/dart-sass-1.87.0-linux-x64.tar.gz -O dart-sass.tar.gz
+#tar -xzf dart-sass.tar.gz
+## Check if an RPM didn't already install it
+#if [[ ! -f /usr/bin/dart-sass ]] && [[ ! -f /usr/local/bin/dart-sass ]]; then
+#    # Copying directly to /usr/local/bin is generally okay for self-contained binaries
+#    cp -rf dart-sass/* /usr/local/bin/
+#else
+#     echo "dart-sass appears to be already installed, skipping manual copy."
+#fi
 
 
-echo "Attempting manual build/install of anyrun"
-cd "${TEMP_DIR}"
-# Check if cargo was installed
-if command -v cargo &> /dev/null; then
-    # Check if rust/cargo setup is needed (might be required in some build envs)
-    # export CARGO_HOME="/path/to/build/cargo/home"
-    # export RUSTUP_HOME="/path/to/build/rustup/home"
-    # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-    # source "$CARGO_HOME/env"
-
-    git clone https://github.com/anyrun-org/anyrun.git
-    cd anyrun
-    cargo build --release --target-dir target # Build all the packages, specify target dir
-    # Install the anyrun binary to /usr/local/bin instead of relying on user's $HOME/.cargo
-    cp target/release/anyrun /usr/local/bin/
-
-    # The following steps are user-specific and should ideally be done post-install
-    # mkdir -p ~/.config/anyrun/plugins # Create the config directory and the plugins subdirectory
-    # cp target/release/*.so ~/.config/anyrun/plugins # Copy all of the built plugins to the correct directory
-    # cp examples/config.ron ~/.config/anyrun/config.ron # Copy the default config file
-    echo "Anyrun binary built and copied to /usr/local/bin."
-    echo "Plugins and default config were NOT copied to user directory during build."
-    echo "Plugins are available in ${TEMP_DIR}/anyrun/target/release/*.so"
-    # Optionally copy plugins to a system location? e.g., /usr/lib/anyrun/plugins
-    mkdir -p /usr/lib/anyrun/plugins
-    cp target/release/*.so /usr/lib/anyrun/plugins/
-    echo "Anyrun plugins copied to /usr/lib/anyrun/plugins/"
-else
-    echo "Cargo not found, skipping anyrun build."
-fi
+#echo "Attempting manual build/install of anyrun"
+#cd "${TEMP_DIR}"
+## Check if cargo was installed
+#if command -v cargo &> /dev/null; then
+#    # Check if rust/cargo setup is needed (might be required in some build envs)
+#    # export CARGO_HOME="/path/to/build/cargo/home"
+#    # export RUSTUP_HOME="/path/to/build/rustup/home"
+#    # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+#    # source "$CARGO_HOME/env"
+#
+#    git clone https://github.com/anyrun-org/anyrun.git
+#    cd anyrun
+#    cargo build --release --target-dir target # Build all the packages, specify target dir
+#    # Install the anyrun binary to /usr/local/bin instead of relying on user's $HOME/.cargo
+#    cp target/release/anyrun /usr/local/bin/
+#
+#    # The following steps are user-specific and should ideally be done post-install
+#    # mkdir -p ~/.config/anyrun/plugins # Create the config directory and the plugins subdirectory
+#    # cp target/release/*.so ~/.config/anyrun/plugins # Copy all of the built plugins to the correct directory
+#    # cp examples/config.ron ~/.config/anyrun/config.ron # Copy the default config file
+#    echo "Anyrun binary built and copied to /usr/local/bin."
+#    echo "Plugins and default config were NOT copied to user directory during build."
+#    echo "Plugins are available in ${TEMP_DIR}/anyrun/target/release/*.so"
+#    # Optionally copy plugins to a system location? e.g., /usr/lib/anyrun/plugins
+#    mkdir -p /usr/lib/anyrun/plugins
+#    cp target/release/*.so /usr/lib/anyrun/plugins/
+#    echo "Anyrun plugins copied to /usr/lib/anyrun/plugins/"
+#else
+#    echo "Cargo not found, skipping anyrun build."
+#fi
 
 mkdir -p /etc
 rsync -rvK /ctx/system_files/etc /etc
 
 mkdir -p "${TEMP_DIR}/fedora-hyprland"
-git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}"/fedora-hyprland
-cd /tmp/fedora-hyprland
+git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}/fedora-hyprland"
+cd "${TEMP_DIR}/fedora-hyprland"
 cp -Rf .config/* /etc/skel/.config/
 cp -Rf .local/* /etc/skel/.local/
 
