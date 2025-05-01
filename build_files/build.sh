@@ -195,7 +195,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 
 ### Handle Manual Installations ###
 
-mkdir -p /usr/local/bin
+mkdir /usr/local/bin
 echo "Attempting manual installation of cliphist"
 cd "${TEMP_DIR}"
 wget https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64 -O cliphist
