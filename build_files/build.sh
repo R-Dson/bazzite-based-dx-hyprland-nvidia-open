@@ -251,8 +251,9 @@ dnf5 install -y --setopt=install_weak_deps=False \
 #    echo "Cargo not found, skipping anyrun build."
 #fi
 
-mkdir -p /etc
-rsync -rvK /ctx/system_files/etc /etc
+mkdir -p /etc/skel/.config/
+mkdir -p /etc/skel/.local/
+#rsync -rvK /ctx/system_files/etc /etc
 
 mkdir -p "${TEMP_DIR}/fedora-hyprland"
 git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}/fedora-hyprland"
