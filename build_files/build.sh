@@ -67,7 +67,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 # --- Group 2: Desktop Portals, Session & Auth ---
 dnf5 install -y --setopt=install_weak_deps=False \
     mate-polkit \
-    polkit-kde # Already present, mate-polkit added
+    polkit-kde \
     sddm \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
@@ -79,7 +79,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     NetworkManager-tui \
     axel \
     brightnessctl \
-    cliphist # Installs the RPM if available, manual install later as fallback/override
+    cliphist \
     clipman \
     coreutils \
     curl \
@@ -156,7 +156,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     scdoc \
     tinyxml \
     tinyxml2 \
-    tinyxml2-devel \ # Installs version for $RELEASE, removed --releasever=41
+    tinyxml2-devel \
     typescript
 
 # --- Group 5: Python Packages (RPMs & Core) ---
