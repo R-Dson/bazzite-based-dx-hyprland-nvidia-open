@@ -112,23 +112,22 @@ dnf5 install -y --setopt=install_weak_deps=False \
     starship \
     sunshine
 
+# Testing if we can install lua-language-server from brew
+brew install lua-language-server
+
 # Install development tools
 dnf5 install -y --setopt=install_weak_deps=False \
     neovim \
-    python-autopep8 \
+    python3-autopep8 \
     ansible-lint \
     golang \
     nodejs-npm \
     fd-find \
     ripgrep \
     xclip \
-    rsync \
     python3-virtualenv \
-    wget \
     rust \
     cargo
-
-brew install lua-language-server
 
 # Use a COPR Example:
 #
