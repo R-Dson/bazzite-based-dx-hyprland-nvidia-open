@@ -86,7 +86,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     qt5ct \
     qt6-qtwayland \
     qt6ct \
-    rofi \
     rofi-wayland \
     sddm \
     slurp \
