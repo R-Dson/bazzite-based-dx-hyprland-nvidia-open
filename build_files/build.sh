@@ -317,14 +317,7 @@ rm -rf "${TEMP_DIR}"
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-# Enable sddm if it was installed
-if rpm -q sddm > /dev/null 2>&1; then
-    systemctl enable sddm
-fi
-# Enable ydotool if it was installed
-if rpm -q ydotool > /dev/null 2>&1; then
-    systemctl enable ydotool.service
-fi
+
 # Check if gammastep service exists and enable if desired
 # systemctl enable gammastep.service # Or gammastep-systemd-user.service? Needs investigation.
 
