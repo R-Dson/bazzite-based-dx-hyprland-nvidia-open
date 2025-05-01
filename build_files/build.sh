@@ -195,9 +195,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
 
 ### Handle Manual Installations ###
 
+mkdir -p /usr/local/bin
 echo "Attempting manual installation of cliphist"
 cd "${TEMP_DIR}"
-wget https://github.com/sentriz/cliphist/releases/download/v0.5.0/v0.5.0-linux-amd64 -O cliphist
+wget https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64 -O cliphist
 chmod +x cliphist
 # Check if an RPM didn't already install it
 if [[ ! -f /usr/bin/cliphist ]]; then
@@ -208,7 +209,7 @@ fi
 
 echo "Attempting manual installation of dart-sass"
 cd "${TEMP_DIR}"
-wget https://github.com/sass/dart-sass/releases/download/1.77.0/dart-sass-1.77.0-linux-x64.tar.gz -O dart-sass.tar.gz
+wget https://github.com/sass/dart-sass/releases/download/1.87.0/dart-sass-1.87.0-linux-x64.tar.gz -O dart-sass.tar.gz
 tar -xzf dart-sass.tar.gz
 # Check if an RPM didn't already install it
 if [[ ! -f /usr/bin/dart-sass ]] && [[ ! -f /usr/local/bin/dart-sass ]]; then
@@ -253,7 +254,8 @@ fi
 mkdir -p /etc
 rsync -rvK /ctx/system_files/etc /etc
 
-git clone https://github.com/EisregenHaha/fedora-hyprland /tmp/fedora-hyprland
+mkdir -p "${TEMP_DIR}/fedora-hyprland"
+git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}"/fedora-hyprland
 cd /tmp/fedora-hyprland
 cp -Rf .config/* /etc/skel/.config/
 cp -Rf .local/* /etc/skel/.local/
