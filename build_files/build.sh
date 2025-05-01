@@ -99,6 +99,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     wl-clipboard \
     wlogout \
     wofi \
+    nwg-dock-hyprland \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal-hyprland\
@@ -109,8 +110,25 @@ dnf5 install -y --setopt=install_weak_deps=False \
     cascadia-mono-nf-fonts \
     nerd-fonts \
     starship \
-    sunshine     
+    sunshine
 
+# Install development tools
+dnf5 install -y --setopt=install_weak_deps=False \
+    neovim \
+    python-autopep8 \
+    ansible-lint \
+    golang \
+    nodejs-npm \
+    fd-find \
+    ripgrep \
+    xclip \
+    rsync \
+    python3-virtualenv \
+    wget \
+    rust \
+    cargo
+
+brew install lua-language-server
 
 # Use a COPR Example:
 #
