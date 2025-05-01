@@ -168,42 +168,23 @@ dnf5 install -y --setopt=install_weak_deps=False \
 
 # --- Group 6: Theming, Appearance & Fonts ---
 dnf5 install -y --setopt=install_weak_deps=False \
-    ImageMagick \
     SwayNotificationCenter \
     adw-gtk3-theme \
     aylurs-gtk-shell \
-    bluez \
-    bluez-cups \
     dunst \
     eww-wayland \
-    ffmpegthumbs \
-    fish \
-    fontconfig \
     foot \
-    gdouros-symbola-fonts \
     gnome-themes-extra \
-    gtk3 \
-    gtksourceview3 \
     jetbrains-mono-fonts \
-    kde-cli-tools \
     kvantum \
     kvantum-qt5 \
-    lato-fonts \
-    libsass \
-    libxdp \
     nwg-drawer \
     nwg-look \
-    qt5-qtgraphicaleffects \
-    qt5-qtimageformats \
-    qt5-qtquickcontrols \
-    qt5-qtquickcontrols2 \
     qt5ct \
     qt6ct \
-    rofi \
     rofi-wayland \
     starship \
-    swaync \
-    webp-pixbuf-loader
+    swaync 
 
 # --- Group 7: Specific Applications ---
 dnf5 install -y --setopt=install_weak_deps=False \
