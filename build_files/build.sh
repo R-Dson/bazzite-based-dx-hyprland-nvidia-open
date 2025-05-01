@@ -112,9 +112,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     starship \
     sunshine
 
-# Testing if we can install lua-language-server from brew
-brew install lua-language-server
-
 # Install development tools
 dnf5 install -y --setopt=install_weak_deps=False \
     neovim \
