@@ -9,8 +9,6 @@ set -ouex pipefail
 
 mkdir -p /etc/skel/.config
 mkdir -p /etc/skel/.local
-rsync -rvK /ctx/system_files/etc /etc
-
 
 # Ensure temp dir exists and is clean
 rm -rf "${TEMP_DIR}"
@@ -282,6 +280,9 @@ if command -v cargo &> /dev/null; then
 else
     echo "Cargo not found, skipping anyrun build."
 fi
+
+mkdir -p /etc
+rsync -rvK /ctx/system_files/etc /etc
 
 git clone https://github.com/EisregenHaha/fedora-hyprland /tmp/fedora-hyprland
 cd /tmp/fedora-hyprland
