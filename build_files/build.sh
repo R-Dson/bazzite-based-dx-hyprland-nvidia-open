@@ -39,7 +39,6 @@ enable_copr pgdev/ghostty # Kept from previous version
 enable_copr atim/starship
 # Add the notekit repo - Adjust Fedora_Rawhide if targeting a specific release like $RELEASE
 add_repo "https://download.opensuse.org/repositories/home:sp1rit:notekit/Fedora_Rawhide/home:sp1rit:notekit.repo" "home-sp1rit-notekit"
-
 # --- Group 1: Core Wayland & Hyprland ---
 dnf5 install -y --setopt=install_weak_deps=False \
     hyprcursor \
@@ -122,14 +121,9 @@ dnf5 install -y --setopt=install_weak_deps=False \
     blueprint-compiler \
     cargo \
     clang \
-    clatexmath-devel \
-    cmake \
     file-devel \
-    gcc \
-    gcc-c++ \
     gjs-devel \
     gnome-bluetooth \
-    gobject-introspection \
     gobject-introspection-devel \
     gtk-layer-shell-devel \
     gtk4-devel \
@@ -139,25 +133,19 @@ dnf5 install -y --setopt=install_weak_deps=False \
     libdbusmenu-devel \
     libdbusmenu-gtk3-devel \
     libdrm-devel \
-    libgbm-devel \
-    libportal \
     libsass-devel \
     libsoup-devel \
     libsoup3-devel \
     libxdp-devel \
-    make \
     meson \
     pam-devel \
-    pugixml \
     pulseaudio-libs-devel \
     python3-devel \
     python3.11-devel \
     python3.12-devel \
     scdoc \
     tinyxml \
-    tinyxml2 \
-    tinyxml2-devel \
-    typescript
+    tinyxml2-devel 
 
 # --- Group 5: Python Packages (RPMs & Core) ---
 dnf5 install -y --setopt=install_weak_deps=False \
