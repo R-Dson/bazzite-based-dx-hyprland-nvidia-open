@@ -35,7 +35,7 @@ add_repo() {
 # Enable necessary COPRs and Repos first
 enable_copr solopasha/hyprland
 enable_copr erikreider/SwayNotificationCenter # Kept from previous version
-enable_copr pgdev/ghostty # Kept from previous version
+# enable_copr pgdev/ghostty # Kept from previous version
 enable_copr atim/starship
 # Add the notekit repo - Adjust Fedora_Rawhide if targeting a specific release like $RELEASE
 add_repo "https://download.opensuse.org/repositories/home:sp1rit:notekit/Fedora_Rawhide/home:sp1rit:notekit.repo" "home-sp1rit-notekit"
@@ -189,7 +189,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
 # --- Group 7: Specific Applications ---
 dnf5 install -y --setopt=install_weak_deps=False \
     blueman \
-    ghostty \
     gjs \
     wdisplays
 
@@ -251,15 +250,16 @@ dnf5 install -y --setopt=install_weak_deps=False \
 #    echo "Cargo not found, skipping anyrun build."
 #fi
 
-mkdir -p /etc/skel/.config/
-mkdir -p /etc/skel/.local/
+# TODO setup default config
+#mkdir -p /etc/skel/.config/
+#mkdir -p /etc/skel/.local/
 #rsync -rvK /ctx/system_files/etc /etc
 
-mkdir -p "${TEMP_DIR}/fedora-hyprland"
-git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}/fedora-hyprland"
-cd "${TEMP_DIR}/fedora-hyprland"
-cp -Rf .config/* /etc/skel/.config/
-cp -Rf .local/* /etc/skel/.local/
+#mkdir -p "${TEMP_DIR}/fedora-hyprland"
+#git clone https://github.com/EisregenHaha/fedora-hyprland "${TEMP_DIR}/fedora-hyprland"
+#cd "${TEMP_DIR}/fedora-hyprland"
+#cp -Rf .config/* /etc/skel/.config/
+#cp -Rf .local/* /etc/skel/.local/
 
 
 # Font installation from end4fonts git repo needs separate handling.
